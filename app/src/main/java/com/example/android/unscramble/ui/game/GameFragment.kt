@@ -46,8 +46,9 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout XML file and return a binding object instance
-       // using viewbinding binding = GameFragmentBinding.inflate(inflater, container, false)
-        // Inflate using databinding
+       // using view binding
+        // binding = GameFragmentBinding.inflate(inflater, container, false)
+        // Inflate using data binding
         binding = DataBindingUtil.inflate(inflater, R.layout.game_fragment, container, false)
         Log.d("GameFragment", "GameFragment created/re-created!")
         Log.d(
@@ -78,10 +79,15 @@ class GameFragment : Fragment() {
         Log.d("GameFragment", "GameFragment destroyed!")
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("GameFragment", "Game Fragment Destroyed")
+    }
+
     /*
-        * Checks the user's word, and updates the score accordingly.
-        * Displays the next scrambled word.
-        */
+            * Checks the user's word, and updates the score accordingly.
+            * Displays the next scrambled word.
+            */
     private fun onSubmitWord() {
         val playerWord = binding.textInputEditText.text.toString()
 
